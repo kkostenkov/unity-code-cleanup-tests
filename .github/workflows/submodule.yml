@@ -12,6 +12,10 @@ jobs:
           path: Library
           key: Library-Android
           restore-keys: Library-
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: 7.0.x
       - name: Solution generation
         uses: game-ci/unity-builder@v4
         env:

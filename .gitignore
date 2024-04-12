@@ -5,3 +5,4 @@ UserSettings
 *.sln
 *.csproj
 Temp
+obj

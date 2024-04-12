@@ -21,8 +21,11 @@ jobs:
         with:
           targetPlatform: Android
           versioning: None
-          buildMethod: "Unity.CodeEditor.CurrentEditor.SyncAll"
+          buildMethod: "Packages.Rider.Editor.RiderScriptEditor.SyncSolution"
           manualExit: false
+      - name: Install resharper unity plugin
+        run: |
+          nuget install -source https://resharper-plugins.jetbrains.com/api/v2/ -source https://nuget.org/api/v2/ JetBrains.Unity
       - name: Upload project
         uses: actions/upload-artifact@v4
         with:

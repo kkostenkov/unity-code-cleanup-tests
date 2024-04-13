@@ -42,8 +42,12 @@ jobs:
         run: dotnet restore $PROJECT_NAME.sln
 
       - run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
+
+      - run: ls
+
+      - run: pwd
         
       - name: Inspect code
         uses: muno92/resharper_inspectcode@v1
         with:
-          solutionPath: ./$PROJECT_NAME.sln
+          solutionPath: ./unity-code-cleanup-tests.sln

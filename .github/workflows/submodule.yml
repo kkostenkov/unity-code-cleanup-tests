@@ -6,11 +6,11 @@ env:
 jobs:
   inspection:
     runs-on: ubuntu-latest
-    container: unityci/editor:ubuntu-2022.3.24f1-linux-il2cpp-1
+    container: unityci/editor:ubuntu-2022.3.37f1-linux-il2cpp-1
     name: Inspection
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v4
 
       - name: Cache Library
         uses: actions/cache@v3

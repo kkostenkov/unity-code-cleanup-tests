@@ -14,13 +14,14 @@ jobs:
 
       - run: ls
       
-      # - run: export PATH=$HOME/.dotnet/tools:$PATH >> ~/.bashrc
+      - run: export PATH="$PATH:$HOME/.dotnet/tools"
+      - run: . ~/.profile
       
-      # - run: source ~/.bashrc
+      - run: source ~/.bashrc
 
-      # - name: Check PATH
-      #   if: always()
-      #   run: echo $PATH
+      - name: Check PATH
+        if: always()
+        run: echo $PATH
 
       - name: update Path2
         if: always()

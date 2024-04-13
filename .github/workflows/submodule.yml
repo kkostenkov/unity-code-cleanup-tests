@@ -1,5 +1,8 @@
 on: [push]
 
+env:
+  PROJECT_NAME: unity-code-cleanup-tests
+
 jobs:
   inspection:
     runs-on: ubuntu-latest
@@ -43,7 +46,7 @@ jobs:
         with:
           dotnet-version: 7.0.x
       - name: Restore Dependencies
-        run: dotnet restore workspace.sln
+        run: dotnet restore $PROJECT_NAME.sln
       - name: Install resharper unity plugin
         run: |
           nuget install -source https://resharper-plugins.jetbrains.com/api/v2/ -source https://nuget.org/api/v2/ JetBrains.Unity
@@ -51,4 +54,4 @@ jobs:
       - name: Inspect code
         uses: muno92/resharper_inspectcode@v1
         with:
-          solutionPath: ./workspace.sln
+          solutionPath: ./$PROJECT_NAME.sln

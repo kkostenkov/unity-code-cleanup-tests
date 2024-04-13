@@ -30,6 +30,8 @@ jobs:
         if: always()
         run: unity-editor -logFile /dev/stdout -quit -returnlicense
 
+      - run: ls
+      
       - name: Upload project
         uses: actions/upload-artifact@v4
         with:

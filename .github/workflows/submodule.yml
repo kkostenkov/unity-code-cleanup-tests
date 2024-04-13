@@ -12,20 +12,9 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - run: ls
-      
-      - run: export PATH="$PATH:$HOME/.dotnet/tools"
-      - run: . ~/.profile
-      
-      - run: source ~/.bashrc
-
-      - name: Check PATH
-        if: always()
-        run: echo $PATH
-
       - name: update Path2
         if: always()
-        run: export PATH=$PATH:$HOME/.dotnet/tools
+        run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Check PATH 2
         if: always()

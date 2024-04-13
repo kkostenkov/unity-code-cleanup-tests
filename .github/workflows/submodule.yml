@@ -16,17 +16,18 @@ jobs:
           key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: Library-lint-
 
-      - name: Solution generation
-        uses: game-ci/unity-builder@v4
+      - name: Activate Unity
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_LICENSE: ${{ secrets.UNITY_LICENSE }}
-        with:
-          targetPlatform: Android
-          versioning: None
-          buildMethod: "Packages.Rider.Editor.RiderScriptEditor.SyncSolution"
-          manualExit: false
+        run: unity-editor -nographics -logFile /dev/stdout -quit -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD"
+
+      - name: Generate Solution
+        run: unity-editor -nographics -logFile /dev/stdout -customBuildName Card-Game-Simulator -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -quit
+        
+      - name: Return License
+        if: always()
+        run: unity-editor -logFile /dev/stdout -quit -returnlicense
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3

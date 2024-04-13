@@ -1,8 +1,5 @@
 on: [push]
 
-env:
-  PROJECT_PATH: Test
-
 jobs:
   inspection:
     runs-on: ubuntu-latest
@@ -10,14 +7,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Cache
-        uses: actions/cache@v3.3.2
+
+      - name: Cache Library
+        uses: actions/cache@v3
         with:
-          path: ${{ env.PROJECT_PATH }}/Library
-          key: Library-${{ env.PROJECT_PATH }}
-          restore-keys: |
-            Library-${{ env.PROJECT_PATH }}
-            Library-
+          path: Library
+          key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
+          restore-keys: Library-lint-
+
       - name: Solution generation
         uses: game-ci/unity-builder@v4
         env:
@@ -29,6 +26,7 @@ jobs:
           versioning: None
           buildMethod: "Packages.Rider.Editor.RiderScriptEditor.SyncSolution"
           manualExit: false
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:

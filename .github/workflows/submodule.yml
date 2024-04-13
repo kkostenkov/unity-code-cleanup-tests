@@ -14,7 +14,7 @@ jobs:
 
       - run: ls
       
-      - run: export PATH="$HOME/.dotnet/tools:$PATH" >> ~/.bashrc
+      - run: export PATH=$HOME/.dotnet/tools:$PATH >> ~/.bashrc
       
       - run: source ~/.bashrc
 

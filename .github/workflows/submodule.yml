@@ -30,6 +30,12 @@ jobs:
         if: always()
         run: unity-editor -logFile /dev/stdout -quit -returnlicense
 
+      - name: Upload project
+        uses: actions/upload-artifact@v4
+        with:
+          name: project
+          path: ./
+          
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
@@ -39,21 +45,7 @@ jobs:
       - name: Install resharper unity plugin
         run: |
           nuget install -source https://resharper-plugins.jetbrains.com/api/v2/ -source https://nuget.org/api/v2/ JetBrains.Unity
-      - name: Upload project
-        uses: actions/upload-artifact@v4
-        with:
-          name: project
-          path: ./
-      - name: Upload engine dlls
-        uses: actions/upload-artifact@v4
-        with:
-          name: engine
-          path: /opt/unity/Editor/Data/Managed/UnityEngine/
-      - name: Upload dontet dlls
-        uses: actions/upload-artifact@v4
-        with:
-          name: dotnet
-          path: /opt/unity/Editor/Data/NetStandard/compat/
+
       - name: Inspect code
         uses: muno92/resharper_inspectcode@v1
         with:

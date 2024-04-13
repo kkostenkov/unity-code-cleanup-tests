@@ -15,6 +15,10 @@ jobs:
       - run: ls
       
       - run: export PATH="$HOME/.dotnet/tools:$PATH"
+      
+      - name: Check PATH
+        if: always()
+        run: echo $PATH
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3

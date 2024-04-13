@@ -32,18 +32,6 @@ jobs:
 
       - run: ls
       
-      - name: Upload project
-        uses: actions/upload-artifact@v4
-        with:
-          name: project
-          path: ./
-          
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7.0.x
-      - name: Restore Dependencies
-        run: dotnet restore workspace.sln
       - name: Install resharper unity plugin
         run: |
           nuget install -source https://resharper-plugins.jetbrains.com/api/v2/ -source https://nuget.org/api/v2/ JetBrains.Unity

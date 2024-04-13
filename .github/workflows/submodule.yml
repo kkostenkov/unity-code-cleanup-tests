@@ -29,6 +29,8 @@ jobs:
           dotnet-version: 7.0.x
       - name: Restore Dependencies
         run: dotnet restore workspace.sln
+      - name: Try building
+        run: dotnet build workspace.sln
       - name: Install resharper unity plugin
         run: |
           nuget install -source https://resharper-plugins.jetbrains.com/api/v2/ -source https://nuget.org/api/v2/ JetBrains.Unity

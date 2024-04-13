@@ -1,17 +1,23 @@
 on: [push]
 
+env:
+  PROJECT_PATH: Test
+
 jobs:
   inspection:
-    runs-on: ubuntu-latest # or macos-latest, windows-latest
+    runs-on: ubuntu-latest
     name: Inspection
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/cache@v3
+      - name: Cache
+        uses: actions/cache@v3.3.2
         with:
-          path: Library
-          key: Library-Android
-          restore-keys: Library-
+          path: ${{ env.PROJECT_PATH }}/Library
+          key: Library-${{ env.PROJECT_PATH }}
+          restore-keys: |
+            Library-${{ env.PROJECT_PATH }}
+            Library-
       - name: Solution generation
         uses: game-ci/unity-builder@v4
         env:

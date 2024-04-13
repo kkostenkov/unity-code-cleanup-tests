@@ -7,7 +7,7 @@ jobs:
     name: Inspection
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v1
 
       - name: Cache Library
         uses: actions/cache@v3

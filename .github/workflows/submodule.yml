@@ -14,15 +14,12 @@ jobs:
 
       - run: ls
       
+      - run: export PATH="$HOME/.dotnet/tools:$PATH"
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 7.0.x
-
-      - name: Restore Dependencies
-        run: dotnet restore $PROJECT_NAME.sln
-        
-      - run: export PATH="$HOME/.dotnet/tools:$PATH"
 
       - name: Inspect code
         uses: muno92/resharper_inspectcode@v1

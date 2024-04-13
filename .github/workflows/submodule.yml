@@ -22,9 +22,11 @@ jobs:
         if: always()
         run: echo $PATH
 
-      - run: PATH=$PATH:$HOME/.dotnet/tools
+      - name: update Path2
+        if: always()
+        run: PATH=$PATH:$HOME/.dotnet/tools
 
-      - name: Check PATH
+      - name: Check PATH 2
         if: always()
         run: echo $PATH
 

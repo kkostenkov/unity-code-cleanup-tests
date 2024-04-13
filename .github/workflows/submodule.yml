@@ -14,7 +14,15 @@ jobs:
 
       - run: ls
       
-      - run: export PATH="$HOME/.dotnet/tools:$PATH" >> /root/.bashrc
+      - run: export PATH="$HOME/.dotnet/tools:$PATH" >> ~/.bashrc
+      
+      - run: source ~/.bashrc
+
+      - name: Check PATH
+        if: always()
+        run: echo $PATH
+
+      - run: PATH=$PATH:$HOME/.dotnet/tools
 
       - name: Check PATH
         if: always()

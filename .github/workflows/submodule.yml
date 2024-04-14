@@ -41,13 +41,13 @@ jobs:
       #   if: always()
       #   run: unity-editor -logFile /dev/stdout -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -quit -returnlicense
 
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v3
-        with:
-          dotnet-version: 7.0.x
+      # - name: Setup .NET
+      #   uses: actions/setup-dotnet@v3
+      #   with:
+      #     dotnet-version: 7.0.x
 
-      - name: Restore Dependencies
-        run: dotnet restore $PROJECT_NAME.sln
+      # - name: Restore Dependencies
+      #   run: dotnet restore $PROJECT_NAME.sln
 
       - run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 

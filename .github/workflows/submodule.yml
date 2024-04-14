@@ -54,4 +54,5 @@ jobs:
           solutionWideAnalysis: false
           minimumReportSeverity: warning
           minimumSeverity: warning
-          include: **.cs
+          include: |
+            **.cs

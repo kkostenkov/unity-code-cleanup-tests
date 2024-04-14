@@ -32,7 +32,7 @@ jobs:
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
           UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
         run: unity-editor -batchmode -nographics -logFile /dev/stdout -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -serial "$UNITY_SERIAL" -quit
-        
+      
       - name: Return License
         env:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
@@ -45,12 +45,15 @@ jobs:
         with:
           dotnet-version: 7.0.x
 
-      - name: Restore Dependencies
-        run: dotnet restore $PROJECT_NAME.sln
-
+      # Inspect code instalation could not add itself to path. Doing it before manually.
       - run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
       - name: Inspect code
         uses: muno92/resharper_inspectcode@v1
         with:
-          solutionPath: ./unity-code-cleanup-tests.sln
+          solutionPath: ./'${{ env.PROJECT_NAME }}.sln'
+          solutionWideAnalysis: false
+          minimumReportSeverity: warning
+          minimumSeverity: warning
+          include: |
+            **.cs

@@ -27,19 +27,19 @@ jobs:
           key: Library-lint-${{ hashFiles('Assets/**', 'Packages/**', 'ProjectSettings/**') }}
           restore-keys: Library-lint-
 
-      - name: Generate Solution
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-          UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
-        run: unity-editor -batchmode -nographics -logFile /dev/stdout -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -serial "$UNITY_SERIAL" -quit
+      # - name: Generate Solution
+      #   env:
+      #     UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      #     UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      #     UNITY_SERIAL: ${{ secrets.UNITY_SERIAL }}
+      #   run: unity-editor -batchmode -nographics -logFile /dev/stdout -projectPath . -executeMethod Packages.Rider.Editor.RiderScriptEditor.SyncSolution -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -serial "$UNITY_SERIAL" -quit
         
-      - name: Return License
-        env:
-          UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
-          UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
-        if: always()
-        run: unity-editor -logFile /dev/stdout -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -quit -returnlicense
+      # - name: Return License
+      #   env:
+      #     UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
+      #     UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
+      #   if: always()
+      #   run: unity-editor -logFile /dev/stdout -username "$UNITY_EMAIL" -password "$UNITY_PASSWORD" -quit -returnlicense
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3

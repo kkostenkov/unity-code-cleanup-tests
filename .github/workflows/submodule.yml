@@ -43,6 +43,9 @@ jobs:
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
+        
+      - name: Restore Dependencies
+        run: dotnet restore $PROJECT_NAME.sln
 
       # Inspect code instalation could not add itself to path. Doing it before manually.
       - run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH

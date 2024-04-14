@@ -11,7 +11,9 @@ env:
 jobs:
   inspection:
     runs-on: ubuntu-latest
+    # Use gameCi container with installed Unity to keep editor dlls for linter
     container: unityci/editor:ubuntu-2022.3.24f1-linux-il2cpp-3
+
     name: Inspection
     steps:
       - name: Checkout
@@ -48,10 +50,6 @@ jobs:
 
       - run: echo "$HOME/.dotnet/tools" >> $GITHUB_PATH
 
-      - run: ls
-
-      - run: pwd
-        
       - name: Inspect code
         uses: muno92/resharper_inspectcode@v1
         with:

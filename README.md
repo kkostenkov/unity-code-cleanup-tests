@@ -41,18 +41,26 @@ Use the `BLANK_README.md` to get started.
 
 
 <!-- GETTING STARTED -->
+## Demo
+1. Fork this repository
+1. Modify or add new `.cs` file
+1. Create a PR (to your new repo)
+1. Watch workflow run and comment your code style
+
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
+1. Put `check_code_style.yaml` to your repo `.github/workflows`  
+1. Modify project name  
+(It's the name of a directory of your Unity project) 
+1. Modify project path  
+(If your Assets directory is in the repo's root - put "." as project path.)  
+1. Set up GitHub secrets `UNITY_EMAIL`, `UNITY_PASSWORD`, `UNITY_SERIAL`
+1. Code style rules should be defined in `{project_name}.DotSettings` file in Unity project directory
 
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+Unity Pro+ license.  
+Unity Personal license activation is not supported currently.
 
 <!-- CONTRIBUTING -->
 ## Contributing

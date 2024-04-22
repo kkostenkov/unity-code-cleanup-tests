@@ -38,6 +38,7 @@ For each pull request this workflow will generate a solution file for your Unity
 (If your Assets directory is in the repo's root - put "." as project path.)  
 1. Set up GitHub secrets `UNITY_EMAIL`, `UNITY_PASSWORD`, `UNITY_SERIAL`
 1. Code style rules should be defined in `{project_name}.DotSettings` file in Unity project directory
+1. The inspection step could be set up according to [the documentation](https://github.com/muno92/resharper_inspectcode?tab=readme-ov-file#input)
 
 ### Prerequisites
 
@@ -47,7 +48,7 @@ Unity Personal license activation is not supported currently.
 <!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!

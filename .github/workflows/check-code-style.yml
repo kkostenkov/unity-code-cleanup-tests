@@ -6,7 +6,7 @@ on:
       - '**.cs'
 
 env:
-  PROJECT_NAME: unity-code-cleanup-tests
+  PROJECT_NAME: UnityProject
   PROJECT_PATH: "UnityProject/"
   
 jobs:

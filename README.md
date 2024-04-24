@@ -32,10 +32,10 @@ For each pull request this workflow will generate a solution file for your Unity
 ## Getting Started
 
 1. Put `check_code_style.yaml` to your repo `.github/workflows`  
-1. Modify project name  
+1. Open `check_code_style.yaml` and modify `PROJECT_NAME`    
 (It's the name of a directory of your Unity project) 
-1. Modify project path  
-(If your Assets directory is in the repo's root - put "." as project path.)  
+1. Modify `PROJECT_PATH`  
+(If your Assets directory is in the repo's root - put `"."` as project path.)  
 1. Set up GitHub secrets `UNITY_EMAIL`, `UNITY_PASSWORD`, `UNITY_SERIAL`
 1. Code style rules should be defined in `{project_name}.DotSettings` file in Unity project directory
 1. The inspection step could be set up according to [the documentation](https://github.com/muno92/resharper_inspectcode?tab=readme-ov-file#input)
